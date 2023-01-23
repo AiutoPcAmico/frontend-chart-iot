@@ -41,11 +41,12 @@
 
 .application {
   background-color: lightgray;
-  width: 87%;
+  width: 67%;
   padding: 3%;
 }
 
 .titols {
   color: #282c34;
   font-weight: bold;
+  font-size: 24px;
 }

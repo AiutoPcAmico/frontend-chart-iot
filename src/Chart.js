@@ -32,7 +32,7 @@ export const options = {
     plugins: {
         title: {
             display: true,
-            text: 'Chart.js Line Chart - Multi Axis',
+            text: 'Temperature & Humidity',
         },
     },
     scales: {
@@ -64,7 +64,6 @@ async function getValues() {
             humidities.push(element.hum)
             return null
         })
-        console.log(timestamps)
         return timestamps
     });
     return {

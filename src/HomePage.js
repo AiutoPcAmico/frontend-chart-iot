@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Chart } from './Chart';
+import { ListErrors } from './ListErrors';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -14,13 +15,23 @@ const Item = styled(Paper)(({ theme }) => ({
     marginBlock: '3px'
 }));
 
-export function HomePage() {
+export function HomePage({ openedPage }) {
     return (
         <Box className={'application'} sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-                <p className='titols'>Grafico</p>
                 <Grid item xs={12}>
-                    <Item><Chart></Chart></Item>
+                    <Item>
+                        {openedPage === "Grafico" &&
+                            <p className='titols'>Grafico</p>
+                            &&
+                            <Chart></Chart>
+                        }
+                        {openedPage === "Lista Errori" &&
+                            <p className='titols'>Lista Errori</p> &&
+                            <ListErrors></ListErrors>
+                        }
+
+                    </Item>
                 </Grid>
 
             </Grid>
