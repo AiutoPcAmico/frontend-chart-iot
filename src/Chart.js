@@ -40,6 +40,13 @@ export const options = {
             type: 'linear',
             display: true,
             position: 'left',
+            ticks: {
+                // Include a dollar sign in the ticks
+                callback: function (value, index, ticks) {
+                    var correct = value.toFixed(0)
+                    return correct + ' %';
+                }
+            }
         },
         temp: {
             type: 'linear',
@@ -48,6 +55,13 @@ export const options = {
             grid: {
                 drawOnChartArea: false,
             },
+            ticks: {
+                // Include a dollar sign in the ticks
+                callback: function (value, index, ticks) {
+                    var correct = value.toFixed(1)
+                    return correct + ' °C';
+                }
+            }
         },
     },
 };
@@ -72,7 +86,6 @@ async function getValues() {
         humidities
     }
 
-
 }
 
 
@@ -91,8 +104,9 @@ export function Chart() {
     const [labels, setLabels] = useState([])
     const [temperatures, setTemperatures] = useState([])
     const [humidities, setHumidities] = useState([])
+    const MINUTE_MS = 5000;
 
-    useEffect(() => {
+    function updateValue() {
         getValues().then((response) => {
 
 
@@ -106,7 +120,22 @@ export function Chart() {
             setLabels(correctedTimestamps.slice(-30))
             setTemperatures(response.temperatures.slice(-30))
             setHumidities(response.humidities.slice(-30))
+            console.log("ricarico!")
         })
+    }
+
+    useEffect(() => {
+        updateValue()
+    }, [])
+
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            updateValue()
+
+        }, MINUTE_MS);
+
+        return () => clearInterval(interval);
     }, [])
 
     const data = {
@@ -129,5 +158,10 @@ export function Chart() {
         ],
     };
 
-    return <Line options={options} data={data} />;
+    return (
+        <p>
+            <p className='titols'>Grafico</p>
+            <Line options={options} data={data} />
+        </p>
+    );
 }

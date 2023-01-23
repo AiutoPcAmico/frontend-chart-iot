@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Grafico', 'Lista Errori'];
+const pages = ['Grafico', 'Lista Allarmi'];
 
 function NavigationBar({ changedElement }) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);

@@ -26,8 +26,7 @@ export function HomePage({ openedPage }) {
                             &&
                             <Chart></Chart>
                         }
-                        {openedPage === "Lista Errori" &&
-                            <p className='titols'>Lista Errori</p> &&
+                        {openedPage === "Lista Allarmi" &&
                             <ListErrors></ListErrors>
                         }
 
