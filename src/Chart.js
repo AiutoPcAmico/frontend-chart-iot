@@ -161,6 +161,7 @@ export function Chart() {
     return (
         <p>
             <p className='titols'>Grafico</p>
+            <p><i>Vengono visualizzati gli ultimi 30 valori (150 secondi)</i></p>
             <Line options={options} data={data} />
         </p>
     );

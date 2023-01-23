@@ -82,6 +82,7 @@ export function ListErrors() {
     return (
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
             <p className='titols'>Lista Allarmi</p>
+            <p><i>L'allarme è triggerato se la Temperatura &gt;20 °C</i></p>
             <TableContainer sx={{ maxHeight: 440 }}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
